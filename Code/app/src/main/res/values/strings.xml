@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">AndroidERestaurant</string>
+    <string-array name="entrees_name">
+        <item>Chips Lays Nature</item>
+        <item>Saucisson Intermarché</item>
+        <item>Salade de tomates surgelées</item>
+    </string-array>
+    <string-array name="entrees_details">
+        <item>description chips</item>
+        <item>description saucisson</item>
+        <item>description salade</item>
+    </string-array>
+</resources>
