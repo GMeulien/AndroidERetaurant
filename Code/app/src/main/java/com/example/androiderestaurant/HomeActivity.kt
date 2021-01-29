@@ -15,14 +15,17 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.entreesBtn.setOnClickListener {
             val didier=Intent(this,EntreeActivity::class.java)
+            didier.putExtra("name", "Entrees")
             startActivity(didier)
         }
         binding.platsBtn.setOnClickListener {
             val didier=Intent(this,EntreeActivity::class.java)
+            didier.putExtra("name", "Plats")
             startActivity(didier)
         }
         binding.dessertsBtn.setOnClickListener {
             val didier=Intent(this,EntreeActivity::class.java)
+            didier.putExtra("name", "Desserts")
             startActivity(didier)
         }
     }

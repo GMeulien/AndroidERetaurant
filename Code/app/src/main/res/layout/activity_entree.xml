@@ -7,11 +7,11 @@
     tools:context=".EntreeActivity">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:text="Nos Entrées"
+        android:text="Titre"
         android:textSize="35dp"
         app:layout_constraintBottom_toTopOf="@+id/recyclerViewAdap"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,5 +25,5 @@
         android:layout_marginTop="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 </androidx.constraintlayout.widget.ConstraintLayout>

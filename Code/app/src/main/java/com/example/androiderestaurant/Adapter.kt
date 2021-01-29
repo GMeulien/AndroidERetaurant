@@ -2,12 +2,13 @@ package com.example.androiderestaurant
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ExpandableListView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androiderestaurant.databinding.RecyclerRawBinding
 import java.util.*
 
 
-class Adapter(private val categories: List<String>): RecyclerView.Adapter<Adapter.CategoryHolder>(){
+class Adapter(private val categories: List<String>, private val categoriesClickListener: (String) -> Unit): RecyclerView.Adapter<Adapter.CategoryHolder>(){
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -20,9 +21,13 @@ class Adapter(private val categories: List<String>): RecyclerView.Adapter<Adapte
 
     class CategoryHolder(binding: RecyclerRawBinding): RecyclerView.ViewHolder(binding.root){
         val title = binding.entreeName
+        val layout = binding.root
     }
 
     override fun onBindViewHolder(holder: CategoryHolder, position: Int) {
         holder.title.text = categories[position]
+        holder.layout.setOnClickListener {
+            categoriesClickListener.invoke(categories[position])
+        }
     }
 }
