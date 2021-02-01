@@ -26,20 +26,19 @@ class EntreeActivity : AppCompatActivity() {
         binding.title.text = ss
 
 
-        binding = ActivityEntreeBinding.inflate(layoutInflater)
-
-        val tab= resources.getStringArray(R.array.entrees_name).toList()
+        /*val tab= resources.getStringArray(R.array.entrees_name).toList()
         binding.recyclerViewAdap.layoutManager = LinearLayoutManager(this)
         binding.recyclerViewAdap.adapter = Adapter(tab){
             val intent = Intent(this, DetailsActivity::class.java)
             intent.putExtra("category", it)
             startActivity(intent)
-        }
+
+        }*/
+        loadData()
     }
 
-
     fun loadData(){
-        val postUrl = "http://test.api.catering.bluecodegames.com/"
+        val postUrl = "http://test.api.catering.bluecodegames.com/menu"
         val requestQueue = Volley.newRequestQueue(this)
 
         val postData = JSONObject()
@@ -53,7 +52,7 @@ class EntreeActivity : AppCompatActivity() {
               displayCategories(categories)
             },
             {
-                Log.e("EntreeActivity", it.toString())
+                Log.e("DetailsActivity", it.toString())
             })
         requestQueue.add(jsonObjectRequest)
     }
