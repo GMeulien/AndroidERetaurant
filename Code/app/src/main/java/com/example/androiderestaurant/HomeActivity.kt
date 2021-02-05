@@ -7,7 +7,7 @@ import com.example.androiderestaurant.databinding.ActivityHomeBinding
 
 private lateinit var binding: ActivityHomeBinding
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,7 +15,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.entreesBtn.setOnClickListener {
             val didier=Intent(this,EntreeActivity::class.java)
-            didier.putExtra("name", "Entrees")
+            didier.putExtra("name", "Entr\u00e9es")
             startActivity(didier)
         }
         binding.platsBtn.setOnClickListener {

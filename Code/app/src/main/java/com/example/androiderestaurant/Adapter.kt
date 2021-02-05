@@ -2,13 +2,12 @@ package com.example.androiderestaurant
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ExpandableListView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androiderestaurant.databinding.RecyclerRawBinding
-import java.util.*
+import modele.Dish
 
 
-class Adapter(private val categories: List<String>, private val categoriesClickListener: (String) -> Unit): RecyclerView.Adapter<Adapter.CategoryHolder>(){
+class Adapter(private val dishes: List<Dish>, private val categoriesClickListener: (Dish) -> Unit): RecyclerView.Adapter<Adapter.CategoryHolder>(){
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -17,17 +16,18 @@ class Adapter(private val categories: List<String>, private val categoriesClickL
         return CategoryHolder(itemBinding)
     }
 
-    override fun getItemCount(): Int = categories.size
+    override fun getItemCount(): Int = dishes.size
 
     class CategoryHolder(binding: RecyclerRawBinding): RecyclerView.ViewHolder(binding.root){
         val title = binding.entreeName
         val layout = binding.root
+        val imageDish = binding.dishPic
     }
 
     override fun onBindViewHolder(holder: CategoryHolder, position: Int) {
-        holder.title.text = categories[position]
+        holder.title.text = dishes[position].toString()
         holder.layout.setOnClickListener {
-            categoriesClickListener.invoke(categories[position])
+            categoriesClickListener.invoke(dishes[position])
         }
     }
 }
