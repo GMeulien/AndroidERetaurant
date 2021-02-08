@@ -72,7 +72,7 @@ class EntreeActivity : BaseActivity() {
         ctv.layoutManager = LinearLayoutManager(this)
         ctv.adapter = Adapter(dishes) {
             val intent = Intent (this, DetailsActivity::class.java)
-            intent.putExtra("category",it)
+            intent.putExtra("dish",it)
             startActivity(intent)
         }
     }

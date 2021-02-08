@@ -1,13 +1,13 @@
 package com.example.androiderestaurant
 
-import android.content.Context
-import modele.Dish
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.androiderestaurant.databinding.ActivityDetailsBinding
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.squareup.picasso.Picasso
+import modele.Dish
 import java.io.File
 
 private lateinit var binding: ActivityDetailsBinding
@@ -20,11 +20,31 @@ class DetailsActivity : AppCompatActivity() {
         binding = ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val dish = intent.getSerializableExtra("dish") as? Dish
-        binding.dishTitle.text=dish?.title
+        val dish = intent.getSerializableExtra("dish") as Dish
+        binding.dishTitle.text=dish.title
+        binding.listIngredients.text = dish.getIngredients()
 
-        binding.listIngredients.text = dish?.ingredients?.joinToString(", ")
-
+        binding.prixTotal.text = dish.getFormattedPrice()
+        var quantityDish: Int = 0
+        var prix: Double = dish.getPrice()
+        binding.addBtn.setOnClickListener{
+            quantityDish ++
+            binding.count.text = quantityDish.toString()
+            prix= quantityDish*dish.getPrice()
+            binding.prixTotal.text="$prix €"
+        }
+        binding.removeBtn.setOnClickListener{
+            if (quantityDish>0){
+                quantityDish --
+                binding.count.text = quantityDish.toString()
+                prix= quantityDish*dish.getPrice()
+                binding.prixTotal.text="$prix €"
+            }
+        }
+        binding.total.setOnClickListener{
+            val didier = Intent( this, BasketActivity::class.java)
+        }
+        Picasso.get().load(dish.getFirstPicture()).into(binding.dishImage)
         val textView = findViewById<TextView>(R.id.dishTitle)
     }
 

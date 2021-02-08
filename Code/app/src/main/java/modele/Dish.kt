@@ -9,8 +9,8 @@ data class Dish (
     @SerializedName( "images") private val pictures: List<String>,
     @SerializedName( "prices") private val prices: List<Price>
 ): Serializable{
-    fun getPrice() = prices[0].price.toDouble()
-    fun getFormattedPrice() = prices[0].price + "€"
+    fun getPrice(): Double = prices[0].price.toDouble()
+    fun getFormattedPrice(): String = prices[0].price + "€"
     fun getFirstPicture() = if (pictures.isNotEmpty() && pictures[0].isNotEmpty()) {
         pictures[0]
     }else{
@@ -22,4 +22,5 @@ data class Dish (
     }else{
         null
     }
+    fun getIngredients(): String = ingredients.map{it.name}.joinToString (", ")
 }

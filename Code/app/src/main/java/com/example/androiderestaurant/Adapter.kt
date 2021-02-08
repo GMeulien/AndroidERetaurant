@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androiderestaurant.databinding.RecyclerRawBinding
+import com.squareup.picasso.Picasso
 import modele.Dish
 
 
@@ -22,10 +23,13 @@ class Adapter(private val dishes: List<Dish>, private val categoriesClickListene
         val title = binding.entreeName
         val layout = binding.root
         val imageDish = binding.dishPic
+        val priceDish = binding.price
     }
 
     override fun onBindViewHolder(holder: CategoryHolder, position: Int) {
-        holder.title.text = dishes[position].toString()
+        holder.title.text = dishes[position].title
+        //holder.priceDish.text = dishes[position].getPrice().toString()
+        Picasso.get().load(dishes[position].getFirstPicture()).into(holder.imageDish)
         holder.layout.setOnClickListener {
             categoriesClickListener.invoke(dishes[position])
         }
