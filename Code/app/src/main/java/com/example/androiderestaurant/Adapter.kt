@@ -28,7 +28,7 @@ class Adapter(private val dishes: List<Dish>, private val categoriesClickListene
 
     override fun onBindViewHolder(holder: CategoryHolder, position: Int) {
         holder.title.text = dishes[position].title
-        //holder.priceDish.text = dishes[position].getPrice().toString()
+        holder.priceDish.text = dishes[position].getFormattedPrice()
         Picasso.get().load(dishes[position].getFirstPicture()).into(holder.imageDish)
         holder.layout.setOnClickListener {
             categoriesClickListener.invoke(dishes[position])
